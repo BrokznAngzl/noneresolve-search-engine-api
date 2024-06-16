@@ -11,11 +11,11 @@ from nomalizing import normalize
 class TfidfService:
     TDIDFVECTORIZER = TfidfVectorizer()
     TDIDFVECTOR = None
-    DOCS = {'doc-token': [], 'web-link': []}
+    DOCS = {'doc-id': [], 'doc-token': [], 'doc-link': [], 'doc-title': [], 'doc-icon': [], 'doc-body': []}
 
     @staticmethod
-    def setup_doc(doc_token):
-        TfidfService.TDIDFVECTOR = TfidfService.TDIDFVECTORIZER.fit_transform(doc_token)
+    def setup_doc(docs_token):
+        TfidfService.TDIDFVECTOR = TfidfService.TDIDFVECTORIZER.fit_transform(docs_token)
 
     @staticmethod
     def set_doc_list(docs):
@@ -68,19 +68,19 @@ class TfidfService:
         similarity_scores = list(enumerate(cosine_similarity(query_vector, TfidfService.TDIDFVECTOR)[0]))
         sorted_similar_docs = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
 
-        sorted_similar_docs[0], sorted_similar_docs[2] = sorted_similar_docs[2], sorted_similar_docs[0]
-        # ranking_ids = []
-        # web_lists = []
         query_result = []
         for i, (doc_idx, similarity_score) in enumerate(sorted_similar_docs[:result_quantity]):
-            link = docs['web-link'][doc_idx]
+            link = docs['doc-link'][doc_idx]
+            title = docs['doc-title'][doc_idx].split()[0]
+            icon = docs['doc-icon'][doc_idx]
+            body = docs['doc-body'][doc_idx]
+
             print(f"{i + 1}. {link} (Similarity score: {similarity_score:.4f})")
-            title, icon, description = TfidfService.getPageInfo(link)
             json_data = {
                 'title': title,
                 'icon': icon,
                 'link': link,
-                'description': description,
+                'description': body[:200],
             }
             query_result.append(json_data)
 

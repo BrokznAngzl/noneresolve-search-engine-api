@@ -1,18 +1,14 @@
 from django.http import JsonResponse
+from rest_framework.decorators import api_view
+
 from tfidf_service import TfidfService
 
 
+@api_view(['GET'])
 def index(request):
-
-    query_result = []
-    if request.method == "GET":
-        query = request.GET.get('query')
-
-        if query == 'ไอ้แก่':
-            query = 'cis'
-
-        print('finding in query in docs...')
-        query_result = TfidfService.search(query, 10, TfidfService.DOCS)
+    query = request.GET.get('query')
+    print('finding in query in docs...')
+    query_result = TfidfService.search(query, 10, TfidfService.DOCS)
 
     response = {
         'data': query_result
