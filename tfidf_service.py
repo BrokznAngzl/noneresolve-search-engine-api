@@ -1,21 +1,18 @@
-import requests
-from bs4 import BeautifulSoup
-
 from pythainlp import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from urllib.parse import urljoin
+
 from nomalizing import normalize
 
 
 class TfidfService:
     TDIDFVECTORIZER = TfidfVectorizer()
     TDIDFVECTOR = None
-    DOCS = {'doc-token': [], 'web-link': []}
+    DOCS = {'doc-id': [], 'doc-token': [], 'doc-link': [], 'doc-title': [], 'doc-icon': [], 'doc-body': []}
 
     @staticmethod
-    def setup_doc(doc_token):
-        TfidfService.TDIDFVECTOR = TfidfService.TDIDFVECTORIZER.fit_transform(doc_token)
+    def setup_doc(docs_token):
+        TfidfService.TDIDFVECTOR = TfidfService.TDIDFVECTORIZER.fit_transform(docs_token)
 
     @staticmethod
     def set_doc_list(docs):
@@ -24,35 +21,6 @@ class TfidfService:
     @staticmethod
     def query_result(query):
         return TfidfService.TDIDFVECTORIZER.transform([query])
-
-    @staticmethod
-    def getPageInfo(url):
-        try:
-            response = requests.get(url)
-            soup = BeautifulSoup(response.content, 'html.parser')
-
-            title = soup.title.string.strip() if soup.title else None
-            if title:
-                title_words = title.split()[:2]
-                title = ' '.join(title_words)
-
-            icon_url = None
-            for tag in soup.find_all('link', rel=lambda value: value and value.lower() in ['icon', 'shortcut icon']):
-                icon_url = urljoin(url, tag['href'])
-                break
-
-            description = None
-            for tag in soup.find_all('p'):
-                text = tag.get_text().strip()
-                if len(text) > 0:
-                    description = text[:200]
-                    break
-
-            return title, icon_url, description
-
-        except Exception as e:
-            print(f"Error fetching information from {url}: {e}")
-            return None, None, None
 
     @staticmethod
     def search(query, result_quantity, docs):
@@ -68,19 +36,23 @@ class TfidfService:
         similarity_scores = list(enumerate(cosine_similarity(query_vector, TfidfService.TDIDFVECTOR)[0]))
         sorted_similar_docs = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
 
-        sorted_similar_docs[0], sorted_similar_docs[2] = sorted_similar_docs[2], sorted_similar_docs[0]
-        # ranking_ids = []
-        # web_lists = []
         query_result = []
         for i, (doc_idx, similarity_score) in enumerate(sorted_similar_docs[:result_quantity]):
-            link = docs['web-link'][doc_idx]
+            link = docs['doc-link'][doc_idx]
+            title = docs['doc-title'][doc_idx].split()[0]
+            icon = docs['doc-icon'][doc_idx]
+
+            # the problem is in my inserting web data in my database
+            body = docs['doc-body'][doc_idx].replace(
+                'เข้าสู่ระบบ MIS บุคลากรคณะ ICSEC2022 การเข้าศึกษา การรับสมัครและคุณสมบัติผู้สมัคร ปฏิทินการศึกษา ค่าธรรมเนียมการศึกษา หลักสูตร ภาควิชา ภาควิชาวิศวกรรมเครื่องกลและการผลิต ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ ภาควิชาวิศวกรรมโยธาและสิ่งแวดล้อม ภาควิชาวิทยาการคอมพิวเตอร์และสารสนเทศ ภาควิชาวิทยาศาสตร์ทั่วไป การรับสมัครและคุณสมบัติผู้สมัคร ปฏิทินการศึกษา ค่าธรรมเนียมการศึกษา 13 หลักสูตร หลักสูตรสาขาวิชาวิศวกรรมโยธา หลักสูตรสาขาวิชาวิศวกรรมไฟฟ้า หลักสูตรสาขาวิชาวิศวกรรมเครื่องกลและการผลิต หลักสูตรสาขาวิชาวิศวกรรมอุตสาหการ หลักสูตรสาขาวิชาวิศวกรรมคอมพิวเตอร์ หลักสูตรสาขาวิชาวิศวกรรมสิ่งแวดล้อมเพื่อการพัฒนาอย่างยั่งยืน หลักสูตรสาขาวิชาวิทยาการคอมพิวเตอร์ หลักสูตรสาขาวิชาเคมีประยุกต์ หลักสูตรสาขาวิชาวิทยาการข้อมูล หลักสูตรสาขาวิชาเทคโนโลยีพลังงานเพื่อความยั่งยืน หลักสูตรสาขาวิชาการจัดการวิศวกรรมและเทคโนโลยี (วศ.ม.) หลักสูตรสาขาวิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ (วศ.ม.) หลักสูตรสาขาวิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ (ปร.ด.) ภาควิชาวิศวกรรมเครื่องกลและการผลิต ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ ภาควิชาวิศวกรรมโยธาและสิ่งแวดล้อม ภาควิชาวิทยาการคอมพิวเตอร์และสารสนเทศ ภาควิชาวิทยาศาสตร์ทั่วไป ระดับปริญญาตรี ระดับบัณฑิตศึกษา ภาควิชาวิศวกรรมเครื่องกลและการผลิต ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ ภาควิชาวิศวกรรมโยธาและสิ่งแวดล้อม ภาควิชาวิทยาการคอมพิวเตอร์และสารสนเทศ ภาควิชาวิทยาศาสตร์ทั่วไป บุคลากรสำนักงานเลขานุการคณะ สำหรับบุคลากร สำหรับนิสิต ประกาศคณะ ประชาสัมพันธ์ รับเข้าศึกษา วิจัยและบริการวิชาการ วิเทศสัมพันธ์ เทคโนโลยีดิจิทัล ข่าวจ้างเหมา/ประกวดราคา แสดงความยินดี จดหมายเวียน โครงสร้างการบริหาร คณะกรรมการประจำคณะ ประวัติคณะ วิสัยทัศน์ พันธกิจ ทำเนียบคณบดี แผนยุทธศาสตร์ 2563–2567 ระดับปริญญาตรี หลักสูตรที่เปิดสอน ช่องทางการรับเข้าศึกษา คุณสมบัติของผู้สมัคร ค่าธรรมเนียมการศึกษา สมัครเข้าศึกษาต่อ ทุนการศึกษา หอพัก ลิงก์ที่เกี่ยวข้อง สวพ.มก. วช. สวก. อว. NRIIS (วช.) วารสาร การประชุมวิชาการ นำไปใช้ประโยชน์ กลุ่มวิจัยและนวัตกรรมอิเล็กทรอนิกส์ชีวภาพ SMART (Systematic Manufacturing Alternative Research Team) กลุ่มวิจัยพลังงานและสิ่งแวดล้อม กลุ่มวิจัยสมุนไพร กลุ่มวิจัยนวัตกรรมวัสดุ (Innovation Material Research Group) หน่วยบริการเครื่องมือวิทยาศาสตร์ ศูนย์วิจัยสมุนไพร ศูนย์ทดสอบและวิจัยทางด้านวิศวกรรมโยธา งานวิเคราะห์น้ำ ค่ายวิทยาศาสตร์ ผลิตภัณฑ์กัญชา U2T เมนู ออกจากระบบ เกี่ยวกับคณะ ข้อมูลการรับเข้า ข้อมูลภาควิชา ระบบสารสนเทศ ข่าวสาร/ประกาศ ติดต่อ'
+                , ' ')
+
             print(f"{i + 1}. {link} (Similarity score: {similarity_score:.4f})")
-            title, icon, description = TfidfService.getPageInfo(link)
             json_data = {
                 'title': title,
                 'icon': icon,
                 'link': link,
-                'description': description,
+                'description': body[:200],
             }
             query_result.append(json_data)
 
