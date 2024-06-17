@@ -30,20 +30,6 @@ class InitiateRequestMiddleware(MiddlewareMixin):
             TfidfService.setup_doc(TfidfService.DOCS['doc-token'])
             print('load data successfully')
 
-        # result = MyToken.objects.values(
-        #     'doc_id', 'tokens',
-        #     web=F('mylinks__link'),
-        #     title=F('mylinks__title'),
-        #     icon=F('mylinks__icon'),
-        #     body=F('mylinks__body')
-        # ).filter(
-        #     doc_idF=('mylinks__id')
-        # )
-
-        # model = Mylinks.objects.all()
-        # serializer = MylinksSerializer(model, many=True)
-        # data = serializer.data
-
         except Exception as e:
             print(f'Error importing MyLink: {e}')
 
