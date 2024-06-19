@@ -4,31 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16ddbf64-3379-4bfc-a5cb-dae29428e23a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/search_engine_api.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database_connector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nomalizing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest_api/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest_api/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest_api/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest_api/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest_api/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest_api/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest_api/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest_api/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/search_engine_api/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/search_engine_api/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/search_engine_api/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/search_engine_api/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/search_engine_api/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tfidf_service.py" afterDir="false" />
+    <list default="true" id="16ddbf64-3379-4bfc-a5cb-dae29428e23a" name="Changes" comment="update query technic">
+      <change afterPath="$PROJECT_DIR$/pagerank_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tfidf_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/tfidf_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +25,25 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;BrokznAngzl&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/BrokznAngzl/search-engine-api.git&quot;,
+    &quot;accountId&quot;: &quot;41c4fea4-a9fe-431e-825d-27a5aa98cfe0&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -62,10 +58,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Django Server.search_engine_api.executor": "Run",
+    "Django Server.search_engine_api.executor": "Debug",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "git-widget-placeholder": "dev",
     "last_opened_file_path": "D:/source/django/search_engine_api/rest_api",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -81,6 +78,7 @@
       <recent name="D:\source\django\search_engine_api\rest_api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\source\django\search_engine_api\rest_api" />
       <recent name="D:\source\django\search_engine_api" />
     </key>
   </component>
@@ -131,18 +129,113 @@
       <workItem from="1718399123885" duration="4843000" />
       <workItem from="1718410002713" duration="571000" />
       <workItem from="1718453218349" duration="14749000" />
-      <workItem from="1718474078925" duration="9238000" />
+      <workItem from="1718474078925" duration="12545000" />
+      <workItem from="1718536765230" duration="241000" />
+      <workItem from="1718538026636" duration="26000" />
+      <workItem from="1718538697708" duration="167000" />
+      <workItem from="1718542564635" duration="4889000" />
+      <workItem from="1718549178690" duration="165000" />
+      <workItem from="1718571493386" duration="5747000" />
+      <workItem from="1718584711114" duration="377000" />
+      <workItem from="1718622448252" duration="647000" />
+      <workItem from="1718631397368" duration="7426000" />
+      <workItem from="1718644259345" duration="6168000" />
+      <workItem from="1718748897221" duration="14143000" />
+      <workItem from="1718768504327" duration="1225000" />
+      <workItem from="1718802393494" duration="8549000" />
     </task>
+    <task id="LOCAL-00001" summary="first api structor">
+      <option name="closed" value="true" />
+      <created>1718490234283</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718490234283</updated>
+    </task>
+    <task id="LOCAL-00002" summary="upadte search algori">
+      <option name="closed" value="true" />
+      <created>1718547364305</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718547364305</updated>
+    </task>
+    <task id="LOCAL-00003" summary="upadte get detail algori">
+      <option name="closed" value="true" />
+      <created>1718577053135</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718577053135</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update query technic">
+      <option name="closed" value="true" />
+      <created>1718650205559</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718650205559</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update query technic">
+      <option name="closed" value="true" />
+      <created>1718655657032</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718655657032</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update query technic">
+      <option name="closed" value="true" />
+      <created>1718655719014</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718655719014</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="first api structor" />
+    <MESSAGE value="upadte search algori" />
+    <MESSAGE value="upadte get detail algori" />
+    <MESSAGE value="update query technic" />
+    <option name="LAST_COMMIT_MESSAGE" value="update query technic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pagerank_service.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tfidf_service.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pagerank_service.py</url>
+          <line>41</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -153,6 +246,8 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Python.DjangoServer">
+        <watch expression="data" language="Python" />
+        <watch expression="docs['doc-link'][0]" language="Python" />
         <watch expression="TfidfService.search(query)" language="Python" />
       </configuration>
     </watches-manager>
