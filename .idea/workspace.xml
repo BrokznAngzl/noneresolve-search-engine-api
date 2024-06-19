@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16ddbf64-3379-4bfc-a5cb-dae29428e23a" name="Changes" comment="update query technic">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/search_engine_api/load_data.py" afterDir="false" />
+    <list default="true" id="16ddbf64-3379-4bfc-a5cb-dae29428e23a" name="Changes" comment="update pyecnhant 1.66">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search_engine_api/middleware.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/search_engine_api/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/search_engine_api/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +148,7 @@
       <workItem from="1718748897221" duration="14143000" />
       <workItem from="1718768504327" duration="1225000" />
       <workItem from="1718802393494" duration="8826000" />
-      <workItem from="1718830233650" duration="5411000" />
+      <workItem from="1718830233650" duration="10061000" />
     </task>
     <task id="LOCAL-00001" summary="first api structor">
       <option name="closed" value="true" />
@@ -210,7 +206,39 @@
       <option name="project" value="LOCAL" />
       <updated>1718811884087</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="turn into online db">
+      <option name="closed" value="true" />
+      <created>1718836069740</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1718836069740</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add requirements.txt">
+      <option name="closed" value="true" />
+      <created>1718837146164</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1718837146164</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update pyecnhant">
+      <option name="closed" value="true" />
+      <created>1718838780832</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1718838780832</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update pyecnhant 1.66">
+      <option name="closed" value="true" />
+      <created>1718839650497</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1718839650497</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,7 +261,11 @@
     <MESSAGE value="upadte search algori" />
     <MESSAGE value="upadte get detail algori" />
     <MESSAGE value="update query technic" />
-    <option name="LAST_COMMIT_MESSAGE" value="update query technic" />
+    <MESSAGE value="turn into online db" />
+    <MESSAGE value="add requirements.txt" />
+    <MESSAGE value="update pyecnhant" />
+    <MESSAGE value="update pyecnhant 1.66" />
+    <option name="LAST_COMMIT_MESSAGE" value="update pyecnhant 1.66" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
