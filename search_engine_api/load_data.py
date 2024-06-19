@@ -4,7 +4,7 @@ from django.utils.deprecation import MiddlewareMixin
 from tfidf_service import TfidfService
 
 
-class InitiateRequestMiddleware(MiddlewareMixin):
+class InitiateLoadData(MiddlewareMixin):
     def __init__(self, get_response=None):
         super().__init__(get_response)
         try:
@@ -34,8 +34,3 @@ class InitiateRequestMiddleware(MiddlewareMixin):
             print(f'Error importing MyLink: {e}')
 
         self.get_response = get_response
-
-
-def process_request(self, request):
-    # This code will run when the server is started
-    print("Middleware is running before any request or response.")
