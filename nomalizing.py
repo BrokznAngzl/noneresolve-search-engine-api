@@ -13,7 +13,7 @@ def normalize(word):
         # word = str(TextBlob(word).correct())
         # word = Word(word).singularize()
     # else:
-    #     print(word, "Alien language")
+    #     print(word, "Alien language") WTF
     return word.lower()
 
 
